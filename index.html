@@ -26,6 +26,17 @@
     // 🧠 But there's a catch: once `age` reaches 12, the `ageGracefully` method will have no effect.
     class PeterPan {
 
+      constructor(name) {
+        this.name = name;
+        this.age = 0;
+      }
+
+      ageGracefully() {
+        if (this.age < 12) {
+          this.age += 1;
+        }
+      }
+
     }
 
     // 👉 CHALLENGE 2
@@ -38,8 +49,29 @@
     // 🧠 Calling `down` changes the `altitude` prop appropriately and returns the updated `altitude`.
     // 🧠 If calling `down` would cause the plane to go below altitude zero, `altitude` is set to 0 and the string "CRASH!" is returned.
     class AirPlane {
+      constructor(model) {
+        this.model = model;
+        this.altitude = 0;
+      }
 
+      up(meters) {
+        if (this.altitude + meters >= 0) {
+          this.altitude += meters;
+          return this.altitude;
+        }
+        return this.altitude;
+      }
+      down(meters) {
+        if (this.altitude - meters >= 0) {
+          this.altitude -= meters;
+          return this.altitude;
+        }
+        this.altitude = 0;
+        return "CRASH!";
+      }
     }
+
+
 
     // 👉 CHALLENGE 3
     // 🧠 Build a Bulb class.
@@ -48,7 +80,25 @@
     // 🧠 The methods work as one might expect, changing the value of `isOn` to the appropriate Boolean.
     // 🧠 The methods also return one of these two strings: "You turned the bulb ON", or "You turned the bulb OFF".
     class Bulb {
+      constructor() {
+        this.isOn = false; // The initial value of `isOn` will be the Boolean false.
+      }
 
+      turnOn() {
+        this.isOn = true;
+        return "You turned the bulb ON";
+      }
+
+      turnOff() {
+        this.isOn = false;
+        return "You turned the bulb OFF";
+      }
+
+
+      toggle() {
+        this.isOn = !this.isOn;
+        return this.isOn ? "You turned the bulb ON" : "You turned the bulb OFF";
+      }
     }
 
     // 👉 CHALLENGE 4
@@ -66,8 +116,29 @@
     //   minusThree.count() // returns null
     //   minusThree.count() // returns null
     class CountDown {
+  
+      constructor(startingNumber) {
+        this.currentNumber = startingNumber;
+      }
 
+      count() {
+        if (this.currentNumber > 0) {
+          const countdownString = `${this.currentNumber}!`;
+          this.currentNumber--;
+          return countdownString;
+        }
+
+       
+        if (this.currentNumber === 0) {
+          this.currentNumber--;
+          return "Liftoff!";
+        }
+
+        
+        return null;
+      }
     }
+    
 
     // 🧪 TESTS, do not work below this line
     // 🧪 TESTS, do not work below this line
